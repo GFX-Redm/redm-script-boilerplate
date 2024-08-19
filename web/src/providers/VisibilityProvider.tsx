@@ -28,10 +28,11 @@ export const VisibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   // Handle pressing escape/backspace
   useEffect(() => {
     // Only attach listener when we are visible
+    if (isEnvBrowser()) setVisible(true);
     if (!visible) return;
 
     const keyHandler = (e: KeyboardEvent) => {
-      if (["Backspace", "Escape"].includes(e.code)) {
+      if (["Escape"].includes(e.code)) {
         if (!isEnvBrowser()) fetchNui("hideFrame");
         else setVisible(!visible);
       }

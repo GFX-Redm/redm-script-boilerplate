@@ -7,5 +7,15 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.flex-center': {
+          display: 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+        },
+      }, ['responsive', 'hover']);
+    }
+  ],
 }
